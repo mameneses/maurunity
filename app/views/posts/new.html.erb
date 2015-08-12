@@ -1,0 +1,30 @@
+
+
+    <center><h1>New Post</h1></center>
+      <%= form_for @post, url: {action:"create"} do |f| %>
+        <div class="row">
+          <div class="col-sm-4">
+            <center>
+              <h3> Title </h3>
+              <%= f.text_field :title, style:"width:450px;"%>
+              <h3> Image Url</h3>
+              <%= f.text_field :image_url, style:"width:400px;"%>
+              <h3>Tag</h3>
+              <%= f.select :tag, ["Community","Universe","You","Community and Universe", "Community and You", "Universe and You","Community and Universe and You"] %>
+            </center>
+            <center>
+            <%= f.submit "Add post", style:"margin-top:50px;", class:"btn btn-primary" %>
+            </center>
+          </div>
+          <div class="col-sm-8">
+
+            <h3>Body</h3>
+            <%= f.text_area :body, style:"width:800px; height:500px;" %>
+            
+          </div>
+          
+        </div>
+      <% end %>
+    
+
+

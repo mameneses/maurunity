@@ -1,0 +1,58 @@
+<div class="home-header">
+  <center>
+    <a href="/about">
+      <h2 class="main-title2">maur</h2>
+    </a>
+    <h1 class="main-title">unity</h1>
+  </center>
+    
+  <div class="row">
+    <div class="col-sm-4">
+      <a href="you">
+        <center class="home-category-title-cont">
+          <h1 class="home-category-title">you</h1>
+        </center>
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <a href="/community">
+        <center class="home-category-title-cont">
+          <h1 class="home-category-title">community</h1>
+        </center>
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <a href="/universe">
+        <center class="home-category-title-cont">
+          <h1 class="home-category-title">universe</h1>
+        </center>
+      </a>
+    </div>
+  </div>
+  <div class="copyright">
+    all content Copyright © 2015 | Design & Development by <a href="http://mameneses.github.io/">Matias Meneses</a>
+  </div>
+</div>
+
+<% @posts.each do |post| %>
+  <div class="row">
+    
+    <div class="col-sm-8"> 
+      <div class="post">
+        <%= link_to(post) do %>
+          <h3><%= post.title %></h3>
+        <% end %>
+          <p><%= post.created_at.strftime("%b %-d, %Y") %></p>
+        <% if admin_signed_in? %>
+          <%= link_to "EDIT", edit_post_path(post), class: "btn btn-warning" %> 
+        <% end %>
+
+        <h5> <%= simple_format("#{post.body}")%> </h5>
+        
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <img class="post-img" src=<%= post.image_url %>>
+    </div>
+  </div>
+<% end %>

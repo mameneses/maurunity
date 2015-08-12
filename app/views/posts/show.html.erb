@@ -1,0 +1,17 @@
+
+  <h1 class="center-text"><%= @post.title %></h1>
+<div class="header">
+  <img class="header-img pointer" src=<%= @post.image_url %>>
+</div>
+<% if admin_signed_in? %>
+          <center>
+            <%= link_to "EDIT", edit_post_path(@post), class: "btn btn-warning" %> 
+          </center>
+        <% end %>
+<div class="post-show-body">
+  <p><%= @post.created_at.strftime("%b %-d, %Y") %></p>
+  <h4> <%= simple_format("#{@post.body}")%></h4>
+</div>
+
+        
+     

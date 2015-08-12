@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>maur-unity</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+</head>
+<body>
+<% if admin_signed_in? %>
+  <div class="new-post-btn">
+   <a href="/posts/new">new post</a> <br>
+   <%= link_to "sign out", destroy_admin_session_path, :method => :delete %>
+  </div>
+<% else %>
+  <div class="new-post-btn">
+    <%= link_to "admin", new_admin_session_path %>
+  </div>
+<% end %>
+<div class="home-btn">
+ <a href="/"><h4>home<h4></a> 
+</div>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<h1 class="center-text">universe</h1>
+<div class="header">
+  <img class="category-header-img pointer" src="https://scontent-lax1-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/403894_662713385059_278796667_n.jpg?oh=77d08a1be367abf95a2ba667d5212e0b&oe=56463EF5">
+</div>
+<% @posts.each do |post| %>
+  <div class="row">
+    
+    <div class="col-sm-8"> 
+      <div class="post">
+        <%= link_to(post) do %>
+          <h3><%= post.title %></h3>
+        <% end %>
+          <p><%= post.created_at.strftime("%b %-d, %Y") %></p>
+        <% if admin_signed_in? %>
+          <%= link_to "EDIT", edit_post_path(post), class: "btn btn-warning" %>
+        <% end %>
+
+        <h5> <%= simple_format("#{post.body}")%></h5>
+        
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <img class="post-img" src=<%= post.image_url %>>
+    </div>
+  </div>
+<% end %>

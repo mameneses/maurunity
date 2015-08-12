@@ -1,0 +1,29 @@
+<center><h1>Edit Post</h1></center>
+  <%= form_for @post, url: {action:"update"} do |f| %>
+    <div class="row">
+      <div class="col-sm-4">
+        <center>
+          <h3> Title </h3>
+          <%= f.text_field :title, value:"#{@post.title}", style:"width:450px;"%>
+          <h3> Image Url</h3>
+          <%= f.text_field :image_url, value:"#{@post.image_url}", style:"width:400px;"%>
+          <h3>Tag</h3>
+          <%= f.select :tag, ["Community","Universe","You","Community and Universe", "Community and You", "Universe and You","Community and Universe and You"], value:"#{@post.tag}" %>
+        </center>
+        <center>
+        <%= f.submit "update post", style:"margin-top:50px;", class:"btn btn-primary" %>
+        </center>
+        <center>
+        <%= button_to "delete post", "/posts/#{@post.id}", method: :delete , style:"margin-top:50px;", class:"btn btn-danger" %>
+        </center>
+      </div>
+      <div class="col-sm-8">
+
+        <h3>Body</h3>
+        <%= f.text_area :body, value:"#{@post.body}", style:"width:800px; height:500px;" %>
+        
+      </div>
+      
+    </div>
+  <% end %>
+    
